@@ -14,8 +14,10 @@ project_root/
 │       └── ...
 │
 ├── img_train/                 # Input data for TRAINING
+│   ├── snow_4cam_train        # Image files annotated for training
 │   ├── snow_4cam_train.json   # COCO-format instance annotations
-│   ├── snow_4cam_val.json     # (Optional) Validation annotations
+│   ├── snow_4cam_val          # Image files annotated for validation
+│   ├── snow_4cam_val.json     # Validation annotations
 │   └── snow_4cam_types.json   # Class mapping (defines 'stuff' vs 'things')
 │
 ├── img_seg/                   # Output folder (Generated automatically)
@@ -36,7 +38,7 @@ Prerequisites: Linux with CUDA support.
 1.  **Create and activate a Conda environment:**
 
     ```bash
-    conda create -n fpn python=3.10 -y
+    conda create -n fpn python=3 -y
     conda activate fpn
     ```
 
@@ -49,7 +51,7 @@ Prerequisites: Linux with CUDA support.
     pip3 install torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cu130](https://download.pytorch.org/whl/cu130)
     ```
 
-    **You must modify this line** to match your specific Operating System and CUDA version (e.g., changing `cu130` to `cu118` for CUDA 11.8 or removing the index URL for CPU-only).
+    **You must modify this line** to match your specific Operating System and CUDA version (e.g., changing `cu130` to `cu118` for CUDA 11.8 or `cpu` for CPU-only; please refer to pytorch website).
 
 3.  **Run the installation script:**
     Once configured, run the script to install system dependencies and build Detectron2.
@@ -85,7 +87,8 @@ You **must** sort your JSON categories alphabetically before training. The train
 Use the provided utility script to fix your data:
 
 ```bash
-python sort_json.py ../img_train/your_data.json
+python sort_json.py ../img_train/your_training_data.json ../img_train/{name}_train.json
+python sort_json.py ../img_train/your_validation_data.json ../img_train/{name}_val.json
 ```
 
 ## 🚂 Training
