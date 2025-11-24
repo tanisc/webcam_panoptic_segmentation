@@ -1,8 +1,3 @@
-I apologize for the formatting error. It seems the chat interface closed the code block early, causing the rest of the README to render as chat text instead of raw code.
-
-Here is the **complete** README in a single code block. You can copy the entire block below and save it as `README.md`.
-
-````markdown
 # Webcam Panoptic Segmentation
 
 This repository provides tools for training and running inference using **Detectron2** for panoptic segmentation. It is designed to process webcam imagery, calculate segmentation areas (separating "things" from "stuff"), and output statistical data alongside visualizations.
